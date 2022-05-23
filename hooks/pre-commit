@@ -1,0 +1,36 @@
+#!/bin/sh
+
+RED='\033[0;31;1m'
+GREEN='\033[0;32;1m'
+BLUE='\033[0;34;1m'
+YELLOW='\033[1;33;1m'
+NORMAL='\033[0m'
+
+# $? es el exit code del último comando que el script corrió
+
+echo "${YELLOW}Checking your commit...\n"
+echo "${BLUE}Compiling your code...${NORMAL}\n"
+
+g++ -std=c++17 -Wall -Wpedantic -Wextra -Wshadow -Wsign-conversion main.cpp
+
+if [ $? -eq 1 ]
+then
+  echo "${RED}Compiling failed${NORMAL}\n"
+  exit 1
+fi
+
+echo "${GREEN}Compilation successful.${NORMAL}\n"
+
+echo "${BLUE}Formatting and linting your code...${NORMAL}\n"
+
+find -E . -regex ".*\.(cpp|c|hpp|h)" -type f -print0 | xargs -0 clang-tidy -fix
+
+if [ $? -eq 1 ]
+then
+  echo "${RED}Linting failed${NORMAL}\n"
+  exit 1
+fi
+
+echo "${GREEN}Linting succesful.${NORMAL}\n"
+
+echo "${GREEN}Done :)${NORMAL}\n"
