@@ -1,6 +1,6 @@
 ---
 Checks: "clang-diagnostic-*,clang-analyzer-*,bugprone-*,cppcoreguidelines-*,clang-analyzer-*,modernize-*,performance-*,portability-*,readability-*"
-WarningsAsErrors: ""
+WarningsAsErrors: "clang-diagnostic-*,clang-analyzer-*,clang-analyzer-*,modernize-*,performance-*,portability-*,readability-*"
 HeaderFilterRegex: ""
 AnalyzeTemporaryDtors: false
 FormatStyle: file
@@ -130,8 +130,6 @@ CheckOptions:
     value: "true"
   - key: modernize-use-emplace.ContainersWithPushBack
     value: "::std::vector;::std::list;::std::deque"
-  - key: readability-magic-numbers.IgnoreBitFieldsWidths
-    value: "true"
   - key: modernize-make-unique.IncludeStyle
     value: llvm
   - key: modernize-use-override.OverrideSpelling
@@ -160,8 +158,6 @@ CheckOptions:
     value: "true"
   - key: cppcoreguidelines-pro-bounds-constant-array-index.IncludeStyle
     value: llvm
-  - key: readability-magic-numbers.IgnoreAllFloatingPointValues
-    value: "false"
   - key: readability-suspicious-call-argument.Abbreviations
     value: "arr=array;cnt=count;idx=index;src=source;stmt=statement;cpy=copy;dest=destination;dist=distancedst=distance;ptr=pointer;wdth=width;str=string;ln=line;srv=server;attr=attribute;ref=reference;buf=buffer;col=column;nr=number;vec=vector;len=length;elem=element;val=value;i=index;var=variable;hght=height;cl=client;num=number;pos=position;lst=list;addr=address"
   - key: bugprone-misplaced-widening-cast.CheckImplicitCasts
@@ -181,7 +177,7 @@ CheckOptions:
   - key: cppcoreguidelines-avoid-magic-numbers.IgnoreBitFieldsWidths
     value: "true"
   - key: cppcoreguidelines-avoid-magic-numbers.IgnoredIntegerValues
-    value: "1;2;3;4;5;6;7;8;9"
+    value: "1;2;3;4;5;6;7;8;9;21;22"
   - key: cppcoreguidelines-no-malloc.Allocations
     value: "::malloc;::calloc"
   - key: bugprone-narrowing-conversions.IgnoreConversionFromTypes
@@ -216,8 +212,6 @@ CheckOptions:
     value: "::free"
   - key: bugprone-dangling-handle.HandleClasses
     value: "std::basic_string_view;std::experimental::basic_string_view"
-  - key: readability-magic-numbers.IgnorePowersOf2IntegerValues
-    value: "false"
   - key: readability-suspicious-call-argument.JaroWinklerSimilarAbove
     value: "85"
   - key: readability-simplify-subscript-expr.Types
@@ -370,18 +364,18 @@ CheckOptions:
     value: "0"
   - key: bugprone-argument-comment.CommentUserDefinedLiterals
     value: "0"
-  - key: readability-magic-numbers.IgnoredFloatingPointValues
-    value: "1.0;100.0;"
   - key: readability-redundant-declaration.IgnoreMacros
     value: "true"
   - key: performance-inefficient-string-concatenation.StrictMode
-    value: "false"
+    value: "true"
   - key: bugprone-easily-swappable-parameters.IgnoredParameterTypeSuffixes
     value: "bool;Bool;_Bool;it;It;iterator;Iterator;inputit;InputIt;forwardit;FowardIt;bidirit;BidirIt;constiterator;const_iterator;Const_Iterator;Constiterator;ConstIterator;RandomIt;randomit;random_iterator;ReverseIt;reverse_iterator;reverse_const_iterator;ConstReverseIterator;Const_Reverse_Iterator;const_reverse_iterator;Constreverseiterator;constreverseiterator"
   - key: modernize-make-unique.MakeSmartPtrFunction
     value: "std::make_unique"
   - key: portability-restrict-system-includes.Includes
     value: "*"
+  - key: readability-magic-numbers.IgnoredIntegerValues
+    value: "0;1;2;3;4;5;6;21;22"
   - key: readability-implicit-bool-conversion.AllowPointerConditions
     value: "false"
   - key: modernize-make-unique.MakeSmartPtrFunctionHeader
@@ -440,8 +434,6 @@ CheckOptions:
     value: "false"
   - key: performance-inefficient-vector-operation.VectorLikeClasses
     value: "::std::vector"
-  - key: readability-magic-numbers.IgnoredIntegerValues
-    value: "1;2;3;4;5;6;7;8;9"
   - key: modernize-use-auto.RemoveStars
     value: "false"
   - key: bugprone-implicit-widening-of-multiplication-result.IncludeStyle
