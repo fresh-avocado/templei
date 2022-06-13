@@ -29,8 +29,8 @@ void by_value(std::vector<int> v) {
 
 // acá cuando se hace `v = ivec`, se crea una referencia,
 // un alias, un puntero por debajo que no copia absolutamente
-// nada de ivec a v. ahora v es lo mismo que ivec, es un alias
-// por lo tanto mucho más rápido
+// nada de ivec a v (solo el puntero), por lo tanto mucho
+// más rápido. ahora v es lo mismo que ivec, es un alias
 void by_ref(const std::vector<int>& v) {
   printf("&data: %p\n", v.data());
   for (const auto& i : v) {
